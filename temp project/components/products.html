@@ -1,0 +1,77 @@
+<div id="products" class="screen active">
+    <h3>Product Overview</h3>
+    <div class="grid">
+        <div class="card">
+            <h4><i class="fas fa-cogs"></i> Total Categories</h4>
+            <p>2</p>
+            <small>+1 this month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-box"></i> Total Products</h4>
+            <p>55</p>
+            <small>+10 this month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-truck"></i> Products in Stock</h4>
+            <p>35</p>
+            <small>+5 this week</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-tags"></i> Featured Products</h4>
+            <p>5</p>
+            <small>New arrivals this week</small>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h4>Product List</h4>
+        <div class="search-bar">
+            <select style="width: 200px;">
+                <option>All Categories</option>
+                <option>Milk Products</option>
+                <option>Agro Products</option>
+            </select>
+            <input type="text" placeholder="Search products...">
+            <button class="btn btn-primary" onclick="showModal('addProduct')">
+                <i class="fas fa-plus"></i> Add Product
+            </button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>GST</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Full Cream Milk</td>
+                        <td>Milk Products</td>
+                        <td>500 ML</td>
+                        <td>₹30</td>
+                        <td>500 units</td>
+                        <td>5%</td>
+                        <td>
+                            <button class="btn btn-warning" onclick="editProduct(1)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteProduct(1)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- More product rows can be added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script> 

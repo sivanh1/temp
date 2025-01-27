@@ -1,0 +1,74 @@
+<div id="vehicles" class="screen active">
+    <h3>Vehicle Overview</h3>
+    <div class="grid">
+        <div class="card">
+            <h4><i class="fas fa-car"></i> Total Vehicles</h4>
+            <p>25</p>
+            <small>+3 this month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-check-circle"></i> Active Vehicles</h4>
+            <p>18</p>
+            <small>+2 this week</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-wrench"></i> Vehicles in Maintenance</h4>
+            <p>5</p>
+            <small>+1 this month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-truck"></i> Vehicles Inactive</h4>
+            <p>2</p>
+            <small>Recently decommissioned</small>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h4>Vehicle List</h4>
+        <div class="search-bar">
+            <input type="text" placeholder="Search vehicles...">
+            <button class="btn btn-primary" onclick="showModal('addVehicle')">
+                <i class="fas fa-plus"></i> Add Vehicle
+            </button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle Name</th>
+                        <th>Number Plate</th>
+                        <th>Driver</th>
+                        <th>Documents</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Truck 001</td>
+                        <td>TN 01 AB 1234</td>
+                        <td>Sam Wilson</td>
+                        <td>
+                            <button class="btn btn-primary" onclick="viewDocuments(1)">
+                                <i class="fas fa-file"></i> View
+                            </button>
+                        </td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                            <button class="btn btn-warning" onclick="editVehicle(1)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteVehicle(1)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- More vehicle rows can be added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script> 

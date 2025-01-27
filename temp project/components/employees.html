@@ -1,0 +1,236 @@
+<div id="employees" class="screen active">
+    <h3>Employees Overview</h3>
+    <div class="grid">
+        <div class="card">
+            <h4><i class="fas fa-users"></i> Total Employees</h4>
+            <p>150</p>
+            <small>+5 this month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-check-circle"></i> Active Employees</h4>
+            <p>120</p>
+            <small>4 under probation</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-clock"></i> Today's Shifts</h4>
+            <p>75</p>
+            <small>↑ 20% from last month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-tasks"></i> Pending Tasks</h4>
+            <p>30</p>
+            <small>Mostly managerial updates</small>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h4>Employee List</h4>
+        <div class="search-bar">
+            <input type="text" placeholder="Search employees...">
+            <button class="btn btn-primary" onclick="showModal('addEmployee')">
+                <i class="fas fa-plus"></i> Add Employee
+            </button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Division</th>
+                        <th>Role</th>
+                        <th>Shift</th>
+                        <th>Contact</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Sales</td>
+                        <td>Manager</td>
+                        <td>Morning</td>
+                        <td>+91 98765 43210</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                            <button class="btn btn-warning" onclick="editEmployee(1)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteEmployee(1)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Marketing</td>
+                        <td>Team Lead</td>
+                        <td>Evening</td>
+                        <td>+91 87654 32109</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                            <button class="btn btn-warning" onclick="editEmployee(2)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteEmployee(2)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal: Add Employee -->
+    <div id="addEmployeeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Employee</h3>
+                <span class="modal-close" onclick="closeModal('addEmployeeModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label>Division</label>
+                <select>
+                    <option>Sales</option>
+                    <option>Marketing</option>
+                    <option>Reception</option>
+                    <option>Dispatch</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select>
+                    <option>Manager</option>
+                    <option>Team Lead</option>
+                    <option>Executive</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Shift</label>
+                <select>
+                    <option>Morning</option>
+                    <option>Evening</option>
+                    <option>Night</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="tel" placeholder="Enter contact number">
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea rows="3" placeholder="Enter address"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Documents</label>
+                <div class="file-upload">
+                    <button class="btn btn-primary">Upload Documents</button>
+                    <input type="file" multiple>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="width: 100%">Add Employee</button>
+        </div>
+    </div>
+
+    <!-- Modal: Add Vehicle -->
+    <div id="addVehicleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Vehicle</h3>
+                <span class="modal-close" onclick="closeModal('addVehicleModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Vehicle Name</label>
+                <input type="text" placeholder="Enter vehicle name">
+            </div>
+            <div class="form-group">
+                <label>Number Plate</label>
+                <input type="text" placeholder="Enter number plate">
+            </div>
+            <div class="form-group">
+                <label>Driver</label>
+                <select>
+                    <option>Select Driver</option>
+                    <option>Sam Wilson</option>
+                    <option>Steve Rogers</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>RC Book</label>
+                <div class="file-upload">
+                    <button class="btn btn-primary">Upload RC Book</button>
+                    <input type="file">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Insurance</label>
+                <div class="file-upload">
+                    <button class="btn btn-primary">Upload Insurance</button>
+                    <input type="file">
+                </div>
+            </div>
+            <button class="btn btn-primary" style="width: 100%">Add Vehicle</button>
+        </div>
+    </div>
+
+    <!-- Modal: New Order -->
+    <div id="newOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Order</h3>
+                <span class="modal-close" onclick="closeModal('newOrderModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Agent</label>
+                <select>
+                    <option>Select Agent</option>
+                    <option>John Agent</option>
+                    <option>Mike Agent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Zone</label>
+                <select>
+                    <option>Select Zone</option>
+                    <option>Kanyakumari</option>
+                    <option>Marthandam</option>
+                </select>
+            </div>
+            <div id="orderItems">
+                <div class="form-group">
+                    <label>Product</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select style="flex: 2;">
+                            <option>Select Product</option>
+                            <option>Full Cream Milk</option>
+                            <option>Toned Milk</option>
+                        </select>
+                        <input type="number" placeholder="Quantity" style="flex: 1;">
+                        <button class="btn btn-danger" onclick="removeItem(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="addOrderItem()" style="margin: 10px 0;">
+                <i class="fas fa-plus"></i> Add Item
+            </button>
+            <div class="form-group">
+                <label>Delivery Date</label>
+                <input type="date">
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea rows="3" placeholder="Enter any additional notes"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width: 100%">Place Order</button>
+        </div>
+    </div>
+
+    
+</div>

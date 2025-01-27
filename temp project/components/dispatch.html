@@ -1,0 +1,98 @@
+<div id="dispatch" class="screen active">
+    <h3>Dispatch Overview</h3>
+    <div class="grid">
+        <div class="card">
+            <h4><i class="fas fa-truck"></i> Total Orders</h4>
+            <p>450</p>
+            <small>+30 this month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-shipping-fast"></i> Orders In Progress</h4>
+            <p>120</p>
+            <small>↑ 10% from last month</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-check-circle"></i> Delivered Orders</h4>
+            <p>320</p>
+            <small>10% increase from last week</small>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-map-marker-alt"></i> Active Zones</h4>
+            <p>5</p>
+            <small>Full coverage in Kanyakumari, Marthandam, and more</small>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h4>Recent Dispatch Activities</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>Agent</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>09:30 AM</td>
+                    <td>New order assigned</td>
+                    <td>John Agent</td>
+                    <td><span class="badge badge-info">In Progress</span></td>
+                </tr>
+                <tr>
+                    <td>11:00 AM</td>
+                    <td>Vehicle dispatched for delivery</td>
+                    <td>Mike Driver</td>
+                    <td><span class="badge badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                    <td>12:00 PM</td>
+                    <td>Order out for delivery</td>
+                    <td>Sarah Agent</td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="kanban">
+        <div class="kanban-column">
+            <h4>Not Started</h4>
+            <div class="kanban-item" draggable="true">
+                <h5>Order #12345</h5>
+                <p>Zone: Kanyakumari</p>
+                <p>Items: 50</p>
+                <p>Agent: John Agent</p>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                    Start Processing
+                </button>
+            </div>
+        </div>
+        <div class="kanban-column">
+            <h4>In Progress</h4>
+            <div class="kanban-item" draggable="true">
+                <h5>Order #12346</h5>
+                <p>Zone: Marthandam</p>
+                <p>Items: 30</p>
+                <p>Vehicle: TN 01 AB 1234</p>
+                <div class="progress" style="margin-top: 10px;">
+                    <div class="progress-bar" style="width: 70%;">70%</div>
+                </div>
+            </div>
+        </div>
+        <div class="kanban-column">
+            <h4>Delivered</h4>
+            <div class="kanban-item" draggable="true">
+                <h5>Order #12347</h5>
+                <p>Zone: Nagercoil</p>
+                <p>Items: 45</p>
+                <p>Completed at: 2:30 PM</p>
+                <span class="badge badge-success">Delivered</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script> 

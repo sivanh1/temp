@@ -1,0 +1,197 @@
+<div id="dashboard" class="screen active">
+    <h3>Overview</h3>
+    <div class="grid">
+        <div class="card">
+            <h4><i class="fas fa-users"></i> Total Employees</h4>
+            <p id="total-employees">150</p>
+            <small id="employee-update">+5 this month</small>
+            <button class="btn" onclick="openModal('employeeModal')">Add Employee</button>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-truck"></i> Active Vehicles</h4>
+            <p id="active-vehicles">25</p>
+            <small id="vehicle-status">2 under maintenance</small>
+            <button class="btn" onclick="openModal('vehicleModal')">Add Vehicle</button>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-shopping-cart"></i> Today's Orders</h4>
+            <p id="todays-orders">342</p>
+            <small id="order-trend">↑ 15% from yesterday</small>
+            <button class="btn" onclick="openModal('orderModal')">Add Order</button>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-map-marker-alt"></i> Active Zones</h4>
+            <p id="active-zones">8</p>
+            <small id="zone-coverage">Full coverage</small>
+            <button class="btn" onclick="openModal('zoneModal')">Add Zone</button>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h4>Recent Activities</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>User</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="activity-list">
+                <tr>
+                    <td>09:45 AM</td>
+                    <td>New order received</td>
+                    <td>Reception Team</td>
+                    <td><span class="badge badge-success">Completed</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modals -->
+<div id="employeeModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Employee</h4>
+        <input type="text" id="employeeName" placeholder="Employee Name">
+        <button class="btn" onclick="addEmployee()">Save</button>
+        <button class="btn" onclick="closeModal('employeeModal')">Cancel</button>
+    </div>
+</div>
+
+<div id="vehicleModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Vehicle</h4>
+        <input type="text" id="vehicleType" placeholder="Vehicle Type">
+        <button class="btn" onclick="addVehicle()">Save</button>
+        <button class="btn" onclick="closeModal('vehicleModal')">Cancel</button>
+    </div>
+</div>
+
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Order</h4>
+        <input type="text" id="orderDetails" placeholder="Order Details">
+        <button class="btn" onclick="addOrder()">Save</button>
+        <button class="btn" onclick="closeModal('orderModal')">Cancel</button>
+    </div>
+</div>
+
+<div id="zoneModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Zone</h4>
+        <input type="text" id="zoneName" placeholder="Zone Name">
+        <button class="btn" onclick="addZone()">Save</button>
+        <button class="btn" onclick="closeModal('zoneModal')">Cancel</button>
+    </div>
+</div>
+
+<script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    function addEmployee() {
+        let employees = document.getElementById('total-employees');
+        let name = document.getElementById('employeeName').value;
+        if (name) {
+            let newCount = parseInt(employees.innerText) + 1;
+            employees.innerText = newCount;
+            document.getElementById('employee-update').innerText = '+1 added today';
+            logActivity(`Employee added: ${name}`, 'HR Team', 'Completed');
+            closeModal('employeeModal');
+        }
+    }
+
+    function addVehicle() {
+        let vehicles = document.getElementById('active-vehicles');
+        let type = document.getElementById('vehicleType').value;
+        if (type) {
+            let newCount = parseInt(vehicles.innerText) + 1;
+            vehicles.innerText = newCount;
+            logActivity(`Vehicle added: ${type}`, 'Dispatch Team', 'Completed');
+            closeModal('vehicleModal');
+        }
+    }
+
+    function addOrder() {
+        let orders = document.getElementById('todays-orders');
+        let details = document.getElementById('orderDetails').value;
+        if (details) {
+            let newCount = parseInt(orders.innerText) + 1;
+            orders.innerText = newCount;
+            logActivity(`Order placed: ${details}`, 'Sales Team', 'Completed');
+            closeModal('orderModal');
+        }
+    }
+
+    function addZone() {
+        let zones = document.getElementById('active-zones');
+        let name = document.getElementById('zoneName').value;
+        if (name) {
+            let newCount = parseInt(zones.innerText) + 1;
+            zones.innerText = newCount;
+            logActivity(`Zone added: ${name}`, 'Admin', 'Completed');
+            closeModal('zoneModal');
+        }
+    }
+
+    function logActivity(activity, user, status) {
+        let table = document.getElementById('activity-list');
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${new Date().toLocaleTimeString()}</td>
+            <td>${activity}</td>
+            <td>${user}</td>
+            <td><span class="badge badge-${status === 'Completed' ? 'success' : 'warning'}">${status}</span></td>
+        `;
+        table.appendChild(newRow);
+    }
+</script>
+
+<style>
+    .btn {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    .badge {
+        padding: 5px;
+        color: white;
+        border-radius: 4px;
+    }
+    .badge-success {
+        background-color: green;
+    }
+    .badge-warning {
+        background-color: orange;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+    }
+</style>

@@ -1,0 +1,146 @@
+<div id="addEmployeeModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Employee</h3>
+            <span class="modal-close" onclick="closeModal('addEmployeeModal')">&times;</span>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label>Division</label>
+            <select>
+                <option>Sales</option>
+                <option>Marketing</option>
+                <option>Reception</option>
+                <option>Dispatch</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Role</label>
+            <select>
+                <option>Manager</option>
+                <option>Team Lead</option>
+                <option>Executive</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Shift</label>
+            <select>
+                <option>Morning</option>
+                <option>Evening</option>
+                <option>Night</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input type="tel" placeholder="Enter contact number">
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <textarea rows="3" placeholder="Enter address"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Documents</label>
+            <div class="file-upload">
+                <button class="btn btn-primary">Upload Documents</button>
+                <input type="file" multiple>
+            </div>
+        </div>
+        <button class="btn btn-primary" style="width: 100%">Add Employee</button>
+    </div>
+</div>
+
+<div id="addVehicleModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Vehicle</h3>
+            <span class="modal-close" onclick="closeModal('addVehicleModal')">&times;</span>
+        </div>
+        <div class="form-group">
+            <label>Vehicle Name</label>
+            <input type="text" placeholder="Enter vehicle name">
+        </div>
+        <div class="form-group">
+            <label>Number Plate</label>
+            <input type="text" placeholder="Enter number plate">
+        </div>
+        <div class="form-group">
+            <label>Driver</label>
+            <select>
+                <option>Select Driver</option>
+                <option>Sam Wilson</option>
+                <option>Steve Rogers</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>RC Book</label>
+            <div class="file-upload">
+                <button class="btn btn-primary">Upload RC Book</button>
+                <input type="file">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Insurance</label>
+            <div class="file-upload">
+                <button class="btn btn-primary">Upload Insurance</button>
+                <input type="file">
+            </div>
+        </div>
+        <button class="btn btn-primary" style="width: 100%">Add Vehicle</button>
+    </div>
+</div>
+
+<div id="newOrderModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>New Order</h3>
+            <span class="modal-close" onclick="closeModal('newOrderModal')">&times;</span>
+        </div>
+        <div class="form-group">
+            <label>Agent</label>
+            <select>
+                <option>Select Agent</option>
+                <option>John Agent</option>
+                <option>Mike Agent</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Zone</label>
+            <select>
+                <option>Select Zone</option>
+                <option>Kanyakumari</option>
+                <option>Marthandam</option>
+            </select>
+        </div>
+        <div id="orderItems">
+            <div class="form-group">
+                <label>Product</label>
+                <div style="display: flex; gap: 10px;">
+                    <select style="flex: 2;">
+                        <option>Select Product</option>
+                        <option>Full Cream Milk</option>
+                        <option>Toned Milk</option>
+                    </select>
+                    <input type="number" placeholder="Quantity" style="flex: 1;">
+                    <button class="btn btn-danger" onclick="removeItem(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" onclick="addOrderItem()" style="margin: 10px 0;">
+            <i class="fas fa-plus"></i> Add Item
+        </button>
+        <div class="form-group">
+            <label>Delivery Date</label>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea rows="3" placeholder="Enter any additional notes"></textarea>
+        </div>
+        <button class="btn btn-primary" style="width: 100%">Place Order</button>
+    </div>
+</div>

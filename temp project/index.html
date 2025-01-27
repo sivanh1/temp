@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanjil Business Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container active" id="loginScreen">
+        <div class="login-form">
+            <h2>Business Management System</h2>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select id="role">
+                    <option value="admin">Admin</option>
+                    <option value="hr">HR Team</option>
+                    <option value="marketing">Marketing Team</option>
+                    <option value="reception">Reception</option>
+                    <option value="sales">Sales</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" style="width: 100%" onclick="login()">Login</button>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">Nanjil Admin Panel</div>
+        <div class="nav-item active" onclick="loadPage('dashboard')">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+        </div>
+        <div class="nav-item" onclick="loadPage('employees')">
+            <i class="fas fa-users"></i>
+            <span>Employees</span>
+        </div>
+        <div class="nav-item" onclick="loadPage('vehicles')">
+            <i class="fas fa-truck"></i>
+            <span>Vehicles</span>
+        </div>
+        <div class="nav-item" onclick="loadPage('products')">
+            <i class="fas fa-box"></i>
+            <span>Products</span>
+        </div>
+        <div class="nav-item" onclick="loadPage('marketing')">
+            <i class="fas fa-bullhorn"></i>
+            <span>Marketing</span>
+        </div>
+        <div class="nav-item" onclick="loadPage('reception')">
+            <i class="fas fa-phone"></i>
+            <span>Reception</span>
+        </div>
+        <div class="nav-item" onclick="loadPage('dispatch')">
+            <i class="fas fa-shipping-fast"></i>
+            <span>Dispatch</span>
+        </div>
+        <div class="nav-item" onclick="logout()" style="margin-top: auto;">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="header">
+            <h2 id="screenTitle">Dashboard</h2>
+            <div class="user-info">
+                <span id="userRole">Admin</span>
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </div>
+        
+        <!-- Dynamic Content Will Load Here -->
+        <div id="dynamicContent"></div>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modalContainer"></div>
+
+    <script>
+        function loadPage(page) {
+            let pageUrl;
+    
+            // Correcting to match with actual page URLs
+            switch (page) {
+                case "dashboard":
+                    pageUrl = "components/dashboard.html";
+                    break;
+                case "employees":
+                    pageUrl = "components/employees.html";
+                    break;
+                case "vehicles":
+                    pageUrl = "components/vehicles.html";
+                    break;
+                case "products":
+                    pageUrl = "components/products.html";
+                    break;
+                case "marketing":
+                    pageUrl = "components/marketing.html";
+                    break;
+                case "reception":
+                    pageUrl = "components/reception.html";
+                    break;
+                case "dispatch":
+                    pageUrl = "components/dispatch.html";
+                    break;
+                default:
+                    pageUrl = "components/dashboard.html"; // Default to dashboard
+            }
+    
+            // Log the page URL for debugging
+            console.log("Loading page: " + pageUrl);
+    
+            // Fetch and load the page content dynamically
+            fetch(pageUrl)
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error("Page not found");
+                    }
+                })
+                .then(html => {
+                    // Check if html is loaded properly
+                    console.log("Fetched content:", html); 
+                    document.getElementById("dynamicContent").innerHTML = html;
+                    document.getElementById("screenTitle").textContent = page.charAt(0).toUpperCase() + page.slice(1);
+    
+                    // Update sidebar active class
+                    document.querySelectorAll(".nav-item").forEach(item => {
+                        item.classList.remove("active");
+                        if (item.querySelector('span') && item.querySelector('span').textContent.toLowerCase() === page) {
+                            item.classList.add("active");
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error("Error loading page:", error);
+                    alert("Error loading page: " + pageUrl);
+                });
+        }
+    
+        // Login function
+        function login() {
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+            const role = document.getElementById('role');
+    
+            // Ensure username/password are filled
+            if (username.value && password.value) {
+                document.getElementById('loginScreen').classList.remove('active');
+                document.getElementById('userRole').textContent = role.value;
+                loadPage('dashboard');
+            } else {
+                alert("Please enter username and password.");
+            }
+        }
+    
+        // Logout function
+        function logout() {
+            document.getElementById('loginScreen').classList.add('active');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+    </script>
+    
+</body>
+</html>

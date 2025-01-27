@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="marketing" class="screen active">
+        <h3>Marketing Overview</h3>
+        <div class="grid">
+            <div class="card">
+                <h4><i class="fas fa-users"></i> Total Agents</h4>
+                <p>50</p>
+                <small>+5 this month</small>
+            </div>
+            <div class="card">
+                <h4><i class="fas fa-truck"></i> Total Distributors</h4>
+                <p>25</p>
+                <small>+3 this month</small>
+            </div>
+            <div class="card">
+                <h4><i class="fas fa-map-marker-alt"></i> Active Zones</h4>
+                <p>8</p>
+                <small>+1 this month</small>
+            </div>
+            <div class="card">
+                <h4><i class="fas fa-clipboard-list"></i> Pending Orders</h4>
+                <p>30</p>
+                <small>Mostly for Kanyakumari zone</small>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h4>Zone-wise Distribution</h4>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Zone</th>
+                            <th>Agents</th>
+                            <th>Distributors</th>
+                            <th>Daily Orders</th>
+                            <th>Performance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kanyakumari</td>
+                            <td>10</td>
+                            <td>5</td>
+                            <td>150</td>
+                            <td><span class="badge badge-success">Good</span></td>
+                            <td>
+                                <button class="btn btn-primary" onclick="viewZoneDetails(1)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marthandam</td>
+                            <td>8</td>
+                            <td>6</td>
+                            <td>120</td>
+                            <td><span class="badge badge-warning">Average</span></td>
+                            <td>
+                                <button class="btn btn-primary" onclick="viewZoneDetails(2)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nagercoil</td>
+                            <td>12</td>
+                            <td>8</td>
+                            <td>200</td>
+                            <td><span class="badge badge-success">Good</span></td>
+                            <td>
+                                <button class="btn btn-primary" onclick="viewZoneDetails(3)">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>
